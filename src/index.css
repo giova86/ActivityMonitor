@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0f16;
+  --color-panel: #121724;
+  --color-panel2: #181f2f;
+  --color-line: #242d41;
+  --color-fog: #8d97ab;
+  --color-snow: #e8edf6;
+  --color-cpu: #56c7f5;
+  --color-gpu: #a08bff;
+  --color-ram: #3fd9a4;
+  --color-heat: #ffb454;
+  --color-heat2: #ff6b6b;
+  --color-down: #62a8ff;
+  --color-up: #f4779d;
+  --color-good: #4ade80;
+
+  --font-sans: ui-sans-serif, -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html {
+  background: var(--color-ink);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-snow);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* I numeri sono strumenti: monospazio a cifre tabulari */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklab, var(--color-line) 80%, transparent);
+  background: linear-gradient(180deg, var(--color-panel2) 0%, var(--color-panel) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.meter {
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50% { opacity: 0.75; box-shadow: 0 0 0 5px rgba(74, 222, 128, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meter, .pulse-dot { transition: none; animation: none; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cpu);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

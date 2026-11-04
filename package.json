@@ -1,0 +1,28 @@
+{
+  "name": "mac-monitor",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Dashboard di monitoraggio in tempo reale per MacBook Pro M4 Max",
+  "scripts": {
+    "dev": "concurrently -k -n server,client \"node --watch server/index.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "echarts": "^5.5.1",
+    "express": "^4.21.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.8"
+  }
+}
